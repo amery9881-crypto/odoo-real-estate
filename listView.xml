@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="app_one.ListView">
+        <div class="p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1>Properties List</h1>
+                
+                <!-- شريط الـ Pagination فوق على اليمين زي أودو -->
+                <div class="d-flex align-items-center gap-2" t-if="state.totalRecords > 0">
+                    <span class="fw-bold">
+                        <t t-esc="state.offset + 1"/>-<t t-esc="Math.min(state.offset + state.limit, state.totalRecords)"/> / <t t-esc="state.totalRecords"/>
+                    </span>
+                    <button class="btn btn-sm btn-light border" t-on-click="prevPage" t-att-disabled="state.offset === 0">‹</button>
+                    <button class="btn btn-sm btn-light border" t-on-click="nextPage" t-att-disabled="state.offset + state.limit >= state.totalRecords">›</button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary mb-3" t-on-click="toggleCreateForm">
+                <t t-if="state.showCreateForm">Close</t>
+                <t t-else="">New</t>
+            </button>
+
+            <t t-if="state.showCreateForm">
+                <FormView onRecordCreated="() => this.onRecordCreated()" onCancel="() => this.toggleCreateForm()"/>
+            </t>
+
+            <div class="o_list_view table-responsive">
+                <table class="o_list_table table table-sm table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="o_list_column_header">Name</th>
+                            <th class="o_list_column_header">Postcode</th>
+                            <th class="o_list_column_header">Date Availability</th>
+                            <th class="o_list_column_header">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="state.records" t-as="record" t-key="record.id">
+                            <tr>
+                                <td><t t-esc="record.name"/></td>
+                                <td><t t-esc="record.postcode"/></td>
+                                <td><t t-esc="record.date_availab"/></td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" t-on-click="() => this.deleteRecord(record.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

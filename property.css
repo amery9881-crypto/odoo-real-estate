@@ -1,0 +1,18 @@
+.header_custom .table thead>tr>th {
+    background-color: #7BD3EA !important;
+    color: #000000 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    padding: 10px !important;
+
+}
+.header_custom .table tbody>tr>td{
+  text-align: center !important;
+    white-space: nowrap !important;  
+}
+
+
+.header_custom .table tbody>tr>td.o_list_number{
+    justify-content: center !important;
+    text-align: center !important
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="app_one.FormView">
+        <div class="d-flex align-items-center gap-3 p-3 bg-light border rounded mb-3">
+            <div>
+                <label class="form-label">Name</label>
+                <input class="form-control" t-model="state.name" placeholder="Enter property name"/>
+            </div>
+            
+            <div>
+                <label class="form-label">Postcode</label>
+                <input class="form-control" t-model="state.postcode" placeholder="Enter property postcode"/>
+            </div>
+
+            <div>
+                <label class="form-label">Date Availab</label>
+                <input class="form-control" t-model="state.date_availab" type="date"/>
+            </div>
+
+            <div class="align-self-end">
+                <button class="btn btn-primary me-2" t-on-click="createRecord">Save</button>
+                <button class="btn btn-secondary" t-on-click="cancel">Cancel</button>
+            </div>
+        </div>
+    </t>
+</templates>
